@@ -13,10 +13,9 @@
 	<description>Eureka Service for DMS</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.persistent</groupId>
+		<artifactId>dms-poc</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<build>
 		<plugins>
