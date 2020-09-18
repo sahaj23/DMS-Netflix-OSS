@@ -1,0 +1,35 @@
+zuul: 
+  prefix: /api
+  routes: 
+    dms-client: 
+      path: /dms-client/**
+      serviceId: HELLO-CLIENT
+    dms-create: 
+      path: /dms-create/**
+    dms-report: 
+      path: /dms-report/**
+    dms-search: 
+      path: /dms-search/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    hostname: localhost
+
+server:
+  port: 8079
+
+spring:
+  application:
+    name: zuul-service
+
+# Increase the Hystrix timeout to 60s (for all)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
