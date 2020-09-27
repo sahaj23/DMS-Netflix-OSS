@@ -1,20 +1,19 @@
 zuul: 
   prefix: /api
   routes: 
-    dms-client: 
-      path: /dms-client/**
-      serviceId: HELLO-CLIENT
     dms-create: 
       path: /dms-create/**
+      url: http://dms-create:8072
     dms-report: 
       path: /dms-report/**
     dms-search: 
       path: /dms-search/**
+      url: http://dms-search:8074
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
+      defaultZone: http://discovery:8070/eureka/
   instance:
     hostname: localhost
 

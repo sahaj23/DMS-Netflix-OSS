@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dms
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  dms-search:
+    image: dms-search
+    restart: on-failure
+    depends_on:
+      - mysqldb
+      - discovery
+    ports:
+      - 8074:8074
+    environment:
+      - DATABASE_HOST=mysqldb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=dms
+      - DATABASE_PORT=3306
+
+  dms-create:
+      image: dms-create
+      restart: on-failure
+      depends_on:
+        - mysqldb
+        - discovery
+      ports:
+        - 8072:8072
+      environment:
+        - DATABASE_HOST=mysqldb
+        - DATABASE_USER=root
+        - DATABASE_PASSWORD=root
+        - DATABASE_NAME=dms
+        - DATABASE_PORT=3306
+
+  discovery:
+      image: eureka-service
+      restart: on-failure
+      ports:
+         - 8070:8070
+
+  zuul-service:
+      image: zuul-service
+      restart: on-failure
+      depends_on:
+        - discovery
+      ports:
+        - 8079:8079
+

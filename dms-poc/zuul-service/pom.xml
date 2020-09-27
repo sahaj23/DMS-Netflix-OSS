@@ -19,6 +19,7 @@
 	</parent>
 
 	<build>
+	<finalName>zuul-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

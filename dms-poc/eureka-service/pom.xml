@@ -18,6 +18,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<build>
+	<finalName>eureka-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

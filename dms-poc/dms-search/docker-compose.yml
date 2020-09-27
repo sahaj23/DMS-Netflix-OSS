@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dms
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  myapp-main:
+    image: dms-search
+    restart: on-failure
+    depends_on:
+      - mysqldb
+    ports:
+      - 8074:8074
+    environment:
+      - DATABASE_HOST=mysqldb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=dms
+      - DATABASE_PORT=3306
