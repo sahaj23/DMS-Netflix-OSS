@@ -10,9 +10,17 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://discovery:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
   instance:
     hostname: localhost
 
 
 
+# Increase the Hystrix timeout to 60s (for all)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

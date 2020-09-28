@@ -3,17 +3,19 @@ zuul:
   routes: 
     dms-create: 
       path: /dms-create/**
-      url: http://dms-create:8072
+      #url: https://dms-create:8072
     dms-report: 
       path: /dms-report/**
     dms-search: 
       path: /dms-search/**
-      url: http://dms-search:8074
+      #url: https://dms-search:8074
 
 eureka:
   client:
+    fetch-registry: true
+    register-with-eureka: true
     serviceUrl:
-      defaultZone: http://discovery:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
   instance:
     hostname: localhost
 
@@ -24,11 +26,3 @@ spring:
   application:
     name: zuul-service
 
-# Increase the Hystrix timeout to 60s (for all)
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 60000
