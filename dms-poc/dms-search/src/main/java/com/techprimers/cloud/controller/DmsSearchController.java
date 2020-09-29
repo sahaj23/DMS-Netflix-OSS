@@ -29,4 +29,15 @@ public class DmsSearchController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
                 .body(file.getPic());
     }
+	
+	@GetMapping("/fileSearch/{filename}.{ext}")
+    public DmsSearchModel searchFile(@PathVariable String filename,@PathVariable("ext") String ext) {
+    	DmsSearchModel file = fileRepository.findByName(filename+"."+ext);
+    	if(file==null) {
+    		return null;
+    	}
+        return file;
+    }
+	
+	
 }

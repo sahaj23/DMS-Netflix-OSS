@@ -12,7 +12,15 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery:8070/eureka/
   instance:
-    hostname: localhost
+    hostname: dms-create
 
 
 
+# Increase the Hystrix timeout to 60s (for all)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -12,4 +12,4 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery:8070/eureka/
   instance:
-    hostname: localhost
+    hostname: dms-search
