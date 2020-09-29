@@ -3,21 +3,22 @@ zuul:
   routes: 
     dms-create: 
       path: /dms-create/**
-      #url: https://dms-create:8072
+      serviceId: dms-create
     dms-report: 
       path: /dms-report/**
     dms-search: 
       path: /dms-search/**
-      #url: https://dms-search:8074
+      serviceId: dms-search
 
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
+      defaultZone: http://discovery:8070/eureka/
   instance:
-    hostname: localhost
+    hostname: zuul-service
+    preferIpAddress: false
 
 server:
   port: 8079
