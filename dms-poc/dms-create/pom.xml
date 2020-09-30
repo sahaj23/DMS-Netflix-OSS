@@ -12,6 +12,13 @@
 	<name>dms-create</name>
 	<description>Demo project for Spring Boot</description>
 
+		<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-aws</artifactId>
+			<version>2.2.4.RELEASE</version>
+		</dependency>
+	</dependencies>
 	<parent>
 		<groupId>com.persistent</groupId>
 		<artifactId>dms-poc</artifactId>
